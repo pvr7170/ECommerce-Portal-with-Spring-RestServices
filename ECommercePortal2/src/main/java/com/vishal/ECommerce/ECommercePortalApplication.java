@@ -20,5 +20,6 @@ public class ECommercePortalApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		System.out.println("Main class");
 	SpringApplication.run(ECommercePortalApplication.class, args);
+	System.out.println("Git Repo");
 	}
 }

@@ -101,11 +101,14 @@ public class UserDAO {
 					entityManager.merge(user);
 			}*/
 				
-		/*//---------- Delete Order by Order_Id and User's Login_Id-----------------------------------	
+		//---------- Delete Order by Order_Id and User's Login_Id-----------------------------------	
 				public void DeleteOrderByOrderIdLoginId(String Login_Id,int Order_Id){
 					UserModel user = entityManager.find(UserModel.class, Login_Id);	
-					user.getOrdersModel().remove(Order_Id);
+					OrdersModel ord = entityManager.find(OrdersModel.class, Order_Id);
+					List<OrdersModel> list =user.getOrdersModel();
+					list.remove(ord);
+					user.setOrdersModel(list);
 					entityManager.merge(user);
-				}*/
+			}
 	
 }

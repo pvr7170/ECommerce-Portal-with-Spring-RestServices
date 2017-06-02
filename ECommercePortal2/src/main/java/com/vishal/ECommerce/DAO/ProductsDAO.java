@@ -48,11 +48,10 @@ public class ProductsDAO {
 		
 		//---------- update Product-----------------------------------
 		public void updateProduct(int Product_Id, ProductsModel productsmodel) {
-			String hql = "Update ProductsModel set Product_Name=:proname, Product_Price=:proprice, Product_Quantity=:proquan, Product_Supplier=:prosup where Product_Id=:Product_Id";
+			String hql = "Update ProductsModel set Product_Name=:proname, Product_Price=:proprice, Product_Supplier=:prosup where Product_Id=:Product_Id";
 			entityManager.createQuery(hql)
 						 .setParameter("proname",productsmodel.getProduct_Name())
 						 .setParameter("proprice", productsmodel.getProduct_Price())
-						 .setParameter("proquan", productsmodel.getProduct_Quantity())
 						 .setParameter("prosup", productsmodel.getProduct_Supplier())
 						 .setParameter("Product_Id", Product_Id)
 						 .executeUpdate();

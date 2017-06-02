@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.HttpHeaders;
 
+import com.vishal.ECommerce.DAO.OrdersDAO;
 import com.vishal.ECommerce.Model.OrdersModel;
 import com.vishal.ECommerce.Model.UserModel;
+import com.vishal.ECommerce.Service.OrdersService;
 import com.vishal.ECommerce.Service.UserService;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
@@ -35,18 +37,23 @@ public class UserController {
 	@Autowired
 	private UserService userservice;
 	
+	@Autowired
+	private OrdersDAO ordersdao;
 	
-/*	//---------- Get All users-----------------------------------
+	@Autowired
+	private OrdersService ordersservice;
+	
+	//---------- Get All users-----------------------------------
 	@RequestMapping(value="/AllUsers", method=RequestMethod.GET)
 	public ResponseEntity<List<UserModel>> getAllUsers() {
 		List<UserModel> list = userservice.getAllUsers();
 		return new ResponseEntity<List<UserModel>>(list, HttpStatus.OK);
-   }*/
-	@RequestMapping(value="/AllUsers", method=RequestMethod.GET)
+   }
+	/*@RequestMapping(value="/AllUsers", method=RequestMethod.GET)
 	public ResponseEntity<Object> getAllUsers() {
 		List<UserModel> list = userservice.getAllUsers();
 		return new ResponseEntity<Object>(list, HttpStatus.OK);
-   }
+   }*/
 	
 	//---------- Get User by ID-----------------------------------
 	@RequestMapping(value="/AllUsers/{id}", method=RequestMethod.GET)
@@ -104,17 +111,18 @@ public class UserController {
 		return new ResponseEntity<String>("Failed", HttpStatus.NOT_ACCEPTABLE);
 	}
 	
-	/*//---------- Delete All Orders by User's Login_Id-----------------------------------
+	/*//---------- Delete All Orders by User's Login_Id -----------------------------------
 	@RequestMapping(value="/DeleteAllOrders/{Id}", method=RequestMethod.DELETE)
 	public void DeleteAllOrdersByLoginId(@PathVariable("Id") String Login_Id,OrdersModel ordersmodel){
 		userservice.DeleteAllOrdersByLoginId(Login_Id,ordersmodel);
   }*/
 	
-	/*//---------- Delete Order by Order_Id and User's Login_Id-----------------------------------
+	//---------- Delete Order by Order_Id and User's Login_Id-----------------------------------
 	@RequestMapping(value="/DeleteUserOrder/{Login_Id}/{Order_Id}", method=RequestMethod.DELETE)
 	public void DeleteOrderByOrderIdLoginId(@PathVariable("Login_Id") String Login_Id,@PathVariable("Order_Id") int Order_Id){
-		userservice.DeleteOrderByOrderIdLoginId(Login_Id, Order_Id);
-  }*/
-	
 		
+		userservice.DeleteOrderByOrderIdLoginId(Login_Id, Order_Id);
+		ordersservice.DeleteOrder(Order_Id);
+	 }
+	
 }

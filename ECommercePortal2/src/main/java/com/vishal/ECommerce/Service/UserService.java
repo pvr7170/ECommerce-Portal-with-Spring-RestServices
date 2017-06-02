@@ -66,10 +66,11 @@ public class UserService {
 		userdao.DeleteAllOrdersByLoginId(Login_Id,ordersmodel);
 		}*/
 	
-	/*//---------- Delete Order by Order_Id and User's Login_Id-----------------------------------
+	//---------- Delete Order by Order_Id and User's Login_Id-----------------------------------
 		public void DeleteOrderByOrderIdLoginId(String Login_Id,int Order_Id){
 			userdao.DeleteOrderByOrderIdLoginId(Login_Id, Order_Id);
-		}*/
+			
+		}
 }
    
 	

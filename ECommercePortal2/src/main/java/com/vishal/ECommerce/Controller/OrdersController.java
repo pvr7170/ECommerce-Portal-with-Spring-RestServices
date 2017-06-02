@@ -71,10 +71,10 @@ public class OrdersController {
 			return new ResponseEntity<String>("Failed", HttpStatus.NOT_ACCEPTABLE);
 		}
 		
-	//----Delete particular order by Order_Id if user requests(Perform this method only after executing 'DeleteOrderByOrderIdLoginId') in UserDAO-----------------------------------
+	/*//----Delete particular order by Order_Id if user requests(Perform this method only after executing 'DeleteOrderByOrderIdLoginId') in UserDAO-----------------------------------
 		@RequestMapping(value="/DeleteOrder/{Order_Id}", method=RequestMethod.DELETE)
 		public void DeleteOrder(@PathVariable("Order_Id") int Order_Id){
 			ordersservice.DeleteOrder(Order_Id);
-	  }
+	  }*/
 		
 }

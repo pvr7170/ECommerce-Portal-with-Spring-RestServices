@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.http.HttpHeaders;
+
+import com.vishal.ECommerce.Model.Cart_Items;
 import com.vishal.ECommerce.Model.OrdersModel;
 import com.vishal.ECommerce.Model.UserModel;
 import com.vishal.ECommerce.Service.Cart_ItemsService;
@@ -29,7 +31,37 @@ import ch.qos.logback.core.net.SyslogOutputStream;
 @RestController
 public class Cart_ItemsController {
 
+	@Autowired
+	private Cart_ItemsService cartservice;
 	
 	
+	//---------- Get All cart items-----------------------------------
+		@RequestMapping(value="/AllCartItems", method=RequestMethod.GET)
+		public ResponseEntity<List<Cart_Items>> getAllItems() {
+			List<Cart_Items> list =	cartservice.getAllitmes();
+			return new ResponseEntity<List<Cart_Items>>(list, HttpStatus.OK);
+	   }
+	
+	//---------- Get cart items by ID-----------------------------------
+	@RequestMapping(value="/AllCartItems/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Cart_Items> getCartById(@PathVariable("id") int id) {
+		Cart_Items cartitems = cartservice.getItemById(id);
+		return new ResponseEntity<Cart_Items>(cartitems, HttpStatus.OK);
+	}
+	
+	//-----------Add cart Items by User's LoginId and CartItems model-----------------------
+	@RequestMapping(value="/AddCartItems/{id}", method=RequestMethod.POST)
+	public ResponseEntity<String> AddCartItemByLoginId(@PathVariable("id") String Login_Id, @RequestBody Cart_Items cartitems){
+		try {
+			cartservice.AddItemToCart(Login_Id, cartitems);
+			
+			return new ResponseEntity<String>("Success",HttpStatus.OK);
+		}catch (Exception e) {
+			System.out.println("Error Adding Cart by LoginId");
+			e.printStackTrace();
+		}
+		return new ResponseEntity<String>("Failed", HttpStatus.NOT_ACCEPTABLE);
+	}
 	
 }
+

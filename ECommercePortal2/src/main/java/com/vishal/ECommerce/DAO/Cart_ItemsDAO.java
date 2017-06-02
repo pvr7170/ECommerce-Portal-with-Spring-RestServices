@@ -82,5 +82,39 @@ public class Cart_ItemsDAO {
 			}
 		}
 		
+		//---------------Update Cart Item------------------------------------------
+		public void updateCart(Cart_Items cartitems,int CartLine_Id) {
+			int q = cartitems.getCartLine_Quantity();
+			int p = q*cartitems.getProductModel().getProduct_Price();
+			String hql = "Update Cart_Items set CartLine_Quantity=:quantity, CartLine_Price=:p where CartLine_Id=:line_id";
+			entityManager.createQuery(hql)
+						 .setParameter("quantity",q)
+						 .setParameter("p", p)
+						 .setParameter("line_id", CartLine_Id)
+						 .executeUpdate();
+
+		}
+		
+		//-------------Remove user's Cart Item--------------------------------------------
+		public void removeItemfromCart(String Login_Id, int CartLine_Id) {
+			String hql = "From UserModel where LoginId=:LoginId";
+			UserModel usermodel = (UserModel) entityManager.createQuery(hql).setParameter("Login_Id", Login_Id).getSingleResult();
+			List<Cart_Items> list = usermodel.getCartItems();
+
+			Cart_Items line = (Cart_Items) entityManager.createQuery("From Cart_Items where CartLine_Id=:line_id")
+					.setParameter("line_id", CartLine_Id).getSingleResult();
+			list.remove(line);
+			usermodel.setCartItems(list);
+			
+			entityManager.merge(usermodel);
+		}
+		
+		//-------------Delete from Cart Table after above method-----------------------------
+				public void deleteCartItem(int CartLine_Id) {
+					entityManager.remove(getItemById(CartLine_Id));
+				}
+				
+		//--------------Delete product from cart------------------------------------------
+				
 
 }

@@ -39,4 +39,21 @@ public class Cart_ItemsService {
 		public void AddItemToCart(String Login_Id, Cart_Items cartitems){
 			cartdao.AddItemToCart(Login_Id, cartitems);
 		}
-}
+		
+		//---------------Update Cart Item------------------------------------------
+				public void updateCart(Cart_Items cartitems,int CartLine_Id) {
+					cartdao.updateCart(cartitems, CartLine_Id);
+				}
+		
+		//-------------Remove Cart Item--------------------------------------------
+			public void removeItemfromCart(String Login_Id, int CartLine_Id) {
+				cartdao.removeItemfromCart(Login_Id, CartLine_Id);
+			}
+			
+		//-------------Delete from Cart Table after above method-----------------------------
+			public void deleteitemfromcarttable(int CartLine_Id){
+				cartdao.deleteCartItem(CartLine_Id);
+			}
+			
+}		
+

@@ -63,5 +63,40 @@ public class Cart_ItemsController {
 		return new ResponseEntity<String>("Failed", HttpStatus.NOT_ACCEPTABLE);
 	}
 	
+	//---------- update User my style-----------------------------------
+		@RequestMapping(value="/UpdateCartItem/{CartLine_Id}", method=RequestMethod.PUT)
+		public ResponseEntity<String> updateCart(@RequestBody Cart_Items cartitems, @PathVariable("CartLine_Id") int CartLine_Id){
+			try {
+				cartservice.updateCart(cartitems, CartLine_Id);
+				
+				return new ResponseEntity<String>("Success",HttpStatus.OK);
+			}catch (Exception e) {
+				System.out.println("Error updating Cart by LoginId");
+				e.printStackTrace();
+			}
+			return new ResponseEntity<String>("Failed", HttpStatus.NOT_ACCEPTABLE);
+		}
+		
+		//-------------Remove Cart Item--------------------------------------------
+			@RequestMapping(value="/removeCartItem/{Login_Id}/{CartLine_Id}", method=RequestMethod.DELETE)
+			public ResponseEntity<String> removeCart(@PathVariable("Login_Id") String Login_Id,@PathVariable("CartLine_Id") int CartLine_Id){
+				try {
+					
+					//destroy relationship between user and cart 
+					cartservice.removeItemfromCart(Login_Id, CartLine_Id);
+					
+					//destroy relationship between cart and product
+					
+					//delete item from cart
+					cartservice.deleteitemfromcarttable(CartLine_Id);
+					
+					return new ResponseEntity<String>("Success",HttpStatus.OK);
+				}catch (Exception e) {
+					System.out.println("Error removing from Cart by LoginId,Cart_Id");
+					e.printStackTrace();
+				}
+				return new ResponseEntity<String>("Failed", HttpStatus.NOT_ACCEPTABLE);
+			}
+				
 }
 

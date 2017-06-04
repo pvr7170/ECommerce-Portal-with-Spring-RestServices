@@ -55,5 +55,9 @@ public class Cart_ItemsService {
 				cartdao.deleteCartItem(CartLine_Id);
 			}
 			
+		//--------------Delete product from cart------------------------------------------
+		public void DeleteCartRelationWithProduct(int CartLine_Id)	{
+				cartdao.DeleteCartRelationWithProduct(CartLine_Id);
+			}
 }		
 

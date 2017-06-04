@@ -86,6 +86,7 @@ public class Cart_ItemsController {
 					cartservice.removeItemfromCart(Login_Id, CartLine_Id);
 					
 					//destroy relationship between cart and product
+					cartservice.DeleteCartRelationWithProduct(CartLine_Id);
 					
 					//delete item from cart
 					cartservice.deleteitemfromcarttable(CartLine_Id);

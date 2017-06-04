@@ -97,7 +97,7 @@ public class Cart_ItemsDAO {
 		
 		//-------------Remove user's Cart Item--------------------------------------------
 		public void removeItemfromCart(String Login_Id, int CartLine_Id) {
-			String hql = "From UserModel where LoginId=:LoginId";
+			String hql = "From UserModel where Login_Id=:Login_Id";
 			UserModel usermodel = (UserModel) entityManager.createQuery(hql).setParameter("Login_Id", Login_Id).getSingleResult();
 			List<Cart_Items> list = usermodel.getCartItems();
 
@@ -115,6 +115,14 @@ public class Cart_ItemsDAO {
 				}
 				
 		//--------------Delete product from cart------------------------------------------
+			public void DeleteCartRelationWithProduct(int CartLine_Id)	{
 				
+				Cart_Items items = entityManager.find(Cart_Items.class, CartLine_Id);	
+				//ProductsModel prod = entityManager.find(ProductsModel.class, Product_Id);
+				
+				items.setProductModel(new ProductsModel());
+				
+				entityManager.merge(items);
+			}
 
 }

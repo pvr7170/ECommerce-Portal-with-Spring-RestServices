@@ -14,13 +14,45 @@ function noBack(){
 	window.history.forward();
         }
     </script>
-
+    
+  <script type="text/javascript">
+  $(document).ready(function () {
+	  var p1=$("#p1").val();
+	  var p2=$("#p2").val();
+	  console.log(p1);
+	  $.get("http://localhost:8080/AllProducts", function (data) {
+          $.each(data, function (i, contact) {
+        	  	if(contact.product_Id == p1){
+        	  		var sam = contact.product_Price;
+        	 }
+        	  	$("#message").html(sam);
+          });
+		  });
+  });
+  
+  
+  </script>
+  
    <title>User's Shopping Page</title>
 </head>
 <body onLoad="noBack();">
     <h1>Welcome user</h1>
 
-    <h2>Choose or explore products and contiue shopping</h2>
+    <h2>Choose or explore products and continue shopping</h2>
+    <br><br>
+    
+    <div id="ProductsList">
+    
+    <h3>Electronics</h3>
+   	
+   	 <input id="p1" name="p1" value="1" size="1" readonly/> 
+    <a href="/ViewProdDetails">
+   <img src="images/SamsungS6Edge.jpg" alt="samsungs6" width="200" height="200">
+	</a>
+    <div id="desc">Samsung s6 Edge - 32GB</div>
+   <p> Price: $ <p id="message"/> </p>
+    
+  </div>
    
 
 </body>

@@ -36,6 +36,11 @@ function noBack(){
    <title>User's Shopping Page</title>
 </head>
 <body onLoad="noBack();">
+
+
+	<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
+
+	
     <h1>Welcome user</h1>
 
     <h2>Choose or explore products and continue shopping</h2>
@@ -45,13 +50,14 @@ function noBack(){
     
     <h3>Electronics</h3>
    	
-   	 <input id="p1" name="p1" value="1" size="1" readonly/> 
+   	 
     <a href="/ViewProdDetails">
    <img src="images/SamsungS6Edge.jpg" alt="samsungs6" width="200" height="200">
 	</a>
-    <div id="desc">Samsung s6 Edge - 32GB</div>
-   <p> Price: $ <p id="message"/> </p>
-    
+	<ul>
+	<li id="p1" value="1">Samsung s6 Edge - 32GB</li>
+    </ul>
+    <div>Price: $<p id="message"></p></div>
   </div>
    
 

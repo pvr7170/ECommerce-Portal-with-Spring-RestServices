@@ -39,7 +39,7 @@ public class Cart_ItemsDAO {
 		}
 			
 		//------------Add Cart Item-----------------------------------------------
-		public void AddItemToCart(String Login_Id, Cart_Items cartitems) {
+		public String AddItemToCart(String Login_Id, Cart_Items cartitems) {
 
 			
 			String hql = "From ProductsModel where Product_Name=:pname and Product_Supplier=:psupplier and Product_Price=:pprice";
@@ -80,6 +80,8 @@ public class Cart_ItemsDAO {
 			else{
 				System.out.println("The entered product does not exist in database");
 			}
+			
+			return hql;
 		}
 		
 		//---------------Update Cart Item------------------------------------------
@@ -95,7 +97,7 @@ public class Cart_ItemsDAO {
 
 		}
 		
-		//-------------Remove user's Cart Item--------------------------------------------
+		//-------------Remove user's Cart Item--------------------------------------
 		public void removeItemfromCart(String Login_Id, int CartLine_Id) {
 			String hql = "From UserModel where Login_Id=:Login_Id";
 			UserModel usermodel = (UserModel) entityManager.createQuery(hql).setParameter("Login_Id", Login_Id).getSingleResult();

@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,7 @@ public class ProductsModel implements Serializable {
 	private int Product_Id;
 	
 	private String Product_Name;
+	private byte[] Product_Image;
 	private int Product_Price;
 	
 	//@Column(name="Product_Image", columnDefinition="BLOB NOT NULL")
@@ -41,24 +43,31 @@ public class ProductsModel implements Serializable {
 	
 	
 	
-	public ProductsModel(int product_Id, String product_Name, int product_Price, Blob product_Image,
+	public ProductsModel(int product_Id, String product_Name, byte[] product_Image, int product_Price,
 			String product_Supplier) {
 		super();
 		Product_Id = product_Id;
 		Product_Name = product_Name;
+		Product_Image = product_Image;
 		Product_Price = product_Price;
-		//Product_Image = product_Image;
 		Product_Supplier = product_Supplier;
 	}
 
 
 
 
+
+
+
 	@Override
 	public String toString() {
-		return "ProductsModel [Product_Id=" + Product_Id + ", Product_Name=" + Product_Name + ", Product_Price="
-				+ Product_Price + ",Product_Supplier=" + Product_Supplier + "]";
+		return "ProductsModel [Product_Id=" + Product_Id + ", Product_Name=" + Product_Name + ", Product_Image="
+				+ Arrays.toString(Product_Image) + ", Product_Price=" + Product_Price + ", Product_Supplier="
+				+ Product_Supplier + "]";
 	}
+
+
+
 
 
 
@@ -79,6 +88,14 @@ public class ProductsModel implements Serializable {
 		Product_Name = product_Name;
 	}
 
+	public byte[] getProduct_Image() {
+		return Product_Image;
+	}
+
+	public void setProduct_Image(byte[] product_Image) {
+		Product_Image = product_Image;
+	}
+
 	public int getProduct_Price() {
 		return Product_Price;
 	}
@@ -86,17 +103,7 @@ public class ProductsModel implements Serializable {
 	public void setProduct_Price(int product_Price) {
 		Product_Price = product_Price;
 	}
-	
 
-	/*public Blob getProduct_Image() {
-		return Product_Image;
-	}
-	
-	public void setProduct_Image(Blob product_Image) {
-		Product_Image = product_Image;
-	}*/
-
-	
 	public String getProduct_Supplier() {
 		return Product_Supplier;
 	}
@@ -105,6 +112,8 @@ public class ProductsModel implements Serializable {
 		Product_Supplier = product_Supplier;
 	}
 
+	
+	
 	
 	
 }

@@ -7,13 +7,6 @@
 
     <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-    <script type="text/javascript">
-window.history.forward();
-function noBack(){
-	window.history.forward();
-        }
-    </script>
     
   <script type="text/javascript">
   $(document).ready(function () {
@@ -41,23 +34,25 @@ function noBack(){
 	<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
 
 	
-    <h1>Welcome user</h1>
+    <h2>Welcome user</h2>
 
     <h2>Choose or explore products and continue shopping</h2>
     <br><br>
     
     <div id="ProductsList">
     
-    <h3>Electronics</h3>
-   	
-   	 
-    <a href="/ViewProdDetails">
+    <h2>Products Available: </a></h2>
+    
+    
+    <h2><a href="/ViewProducts">List of Electronics</a></h2>	
+    
+   	<!-- <a href="/ViewProdDetails">
    <img src="images/SamsungS6Edge.jpg" alt="samsungs6" width="200" height="200">
 	</a>
 	<ul>
 	<li id="p1" value="1">Samsung s6 Edge - 32GB</li>
     </ul>
-    <div>Price: $<p id="message"></p></div>
+    <div>Price: $<p id="message"></p></div> -->
   </div>
    
 

@@ -19,17 +19,7 @@
 <title>Shopping Cart</title>
 </head>
 <body>
-				<div>
-				<ul>
-				<li id="prodID"></li>
-				<li id="prodImage"><img src="' + item.ImageURL + '"  name="productimage" /></li>
-				<li id="prodName"></li>
-				<li id="prodPrice"></li>
-				<li id="prodSup"></li>
-				</ul>
 				
-				
-				</div>
 			
 
                <h3><a href="/ViewProducts" align="right"> (- Back to shopping </a></h3>

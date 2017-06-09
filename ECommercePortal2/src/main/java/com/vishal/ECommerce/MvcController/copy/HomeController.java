@@ -63,6 +63,11 @@ public class HomeController extends HttpServlet{
 		return "WelcomeUser";
 	}
 	
+	@RequestMapping("/Register")
+	public String Register(Model model){
+		return "Register";
+	}
+	
 	@RequestMapping("/Logout")
 	public String Logout (HttpServletRequest request){
 	request.getSession().invalidate();

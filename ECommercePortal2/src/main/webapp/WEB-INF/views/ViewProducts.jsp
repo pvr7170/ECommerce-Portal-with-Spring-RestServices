@@ -19,43 +19,43 @@
     margin: 2px 1px;
     cursor: pointer;
 }
+
+
+
 </style>
+<script type="text/javascript">
+function newDoc(){
+	window.location.assign("/shoppingCart");
+}
+
+</script> 
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     
-    <script src="text/javascript">
-    $(document).ready(function () {
-    $("#addcart").click(function () {
-    	
-    		 window.location = "/shoppingCart";
-    });
-});
-    
-    	</script>
-    
-<title>Product List page</title>
+   <title>Product List page</title>
 </head>
 <body>
 
-	<form id="adduser" action="http://localhost:8080/AddCartItems/{id}">
+	
 	
 		 <c:forEach items="${paginationProducts}" var="prodInfo">
-       <div>
+       <div id="menu">
            <ul>
-               <li><img src="${prodInfo.product_Image}" id="product-image" width="200" height="200"/></li>
-               <li id="prodid">Serial Number: ${prodInfo.product_Id}</li>
-               <li id="prodname">Name: ${prodInfo.product_Name}</li>
-               <li id="prodsup">Supplier: ${prodInfo.product_Supplier}</li>
-               <li id="prodprice">Price: <fmt:formatNumber value="${prodInfo.product_Price}" type="currency"/></li>
-               <li><input type="button" value="Add to Cart" id="addcart" name="addcart"/></li>
+               <li><img src="${prodInfo.product_Image}"  width="200" height="200"></li>
+                <li>Serial Number: ${prodInfo.product_Id}</li>
+               <li>Name: ${prodInfo.product_Name}</li>
+               <li>Supplier: ${prodInfo.product_Supplier}</li>
+               <li>Price: <fmt:formatNumber value="${prodInfo.product_Price}" type="currency"/></li>
+               <li><input type="button" value="Add to Cart" id="addcart" onclick="newDoc()"/></li>
            </ul>
        </div>
  
    </c:forEach>
 		
-		</form>
+	
 		
 		
 </body>

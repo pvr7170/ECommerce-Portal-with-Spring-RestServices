@@ -36,7 +36,7 @@ function noBack(){
             </tr>
 
             <tr>
-                <td><input type="button" value="Login" name="doLogin" id="doLogin" /></td>
+                <td><input type="button" value="Login" name="doLogin" id="doLogin"/></td>
             </tr>
         </table>
     </div>

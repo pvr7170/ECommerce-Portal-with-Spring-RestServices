@@ -20,10 +20,11 @@
 </head>
 <body>
 				
-			
+			<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
 
-               <h3><a href="/ViewProducts" align="right"> (- Back to shopping </a></h3>
+               <h3><a href="/ViewProducts" text-align="right"> (- Back to shopping </a></h3>
 		
-		
-</body>
-</html>
+			<h2> Product Successfully added to Cart</h2> <br>
+			<h3><a href="ViewCart">View Cart</a></h3>
+	</body>
+	</html>

@@ -7,7 +7,12 @@
 
     <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    
+     <script type="text/javascript">
+window.history.forward();
+function noBack(){
+	window.history.forward();
+        }
+    </script>
   <script type="text/javascript">
   $(document).ready(function () {
 	  var p1=$("#p1").val();

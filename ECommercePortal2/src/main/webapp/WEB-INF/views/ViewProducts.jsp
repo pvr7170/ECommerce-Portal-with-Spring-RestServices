@@ -28,6 +28,7 @@ function newDoc(){
 	window.location.assign("/shoppingCart");
 }
 
+
 </script> 
 
 
@@ -38,18 +39,20 @@ function newDoc(){
    <title>Product List page</title>
 </head>
 <body>
-
-	
+<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
+	<p id="log" align="right" style="font-size:25px;"><a href="/WelcomeUser">view more products</a></p>
 	
 		 <c:forEach items="${paginationProducts}" var="prodInfo">
        <div id="menu">
            <ul>
-               <li><img src="${prodInfo.product_Image}"  width="200" height="200"></li>
-                <li>Serial Number: ${prodInfo.product_Id}</li>
+               <li><img src="${prodInfo.product_Image}" width="200" height="200"></li>
+               <%--  <li id="proid">Serial Number: ${prodInfo.product_Id}</li> --%>
                <li>Name: ${prodInfo.product_Name}</li>
                <li>Supplier: ${prodInfo.product_Supplier}</li>
                <li>Price: <fmt:formatNumber value="${prodInfo.product_Price}" type="currency"/></li>
+               <li><a href="/viewProduct/${prodInfo.product_Id}" id="addcart">View Product details</a></li>
                <li><input type="button" value="Add to Cart" id="addcart" onclick="newDoc()"/></li>
+               <p>-----------------------------------------------------------------------------------------</p>
            </ul>
        </div>
  

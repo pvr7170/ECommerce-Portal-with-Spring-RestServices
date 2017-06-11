@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("#doLogin").click(function () {
+    	
         var username = $("#username").val();
         var pass = $("#pass").val();
 

@@ -1,6 +1,7 @@
 package com.vishal.ECommerce.MvcController.copy;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,9 +16,11 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.apache.catalina.Session;
+import org.apache.catalina.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,11 +62,16 @@ public class HomeController extends HttpServlet{
 		
 	}
 	
+	@RequestMapping("/forgotpassword")
+	public String forgotpassword(Map<String,Object> model){
+		model.put("message", this.message);
+		return "forgotpassword";
+	}
+	
 	@RequestMapping("/Login")
 	public String Login(Map<String,Object> model){
 		model.put("message", this.message);
 		return "Login";
-		
 	}
 	
 	@RequestMapping("/WelcomeUser")
@@ -78,8 +86,12 @@ public class HomeController extends HttpServlet{
 	
 	@RequestMapping("/Logout")
 	public String Logout (HttpServletRequest request){
-	request.getSession().invalidate();
-		return "Login";
+		return "/Login";
+	}
+	
+	@RequestMapping("/contact")
+	public String contact (Model model){
+		return "contact";
 	}
 	
 	/*@RequestMapping("/ViewProducts/{LoginId}")
@@ -95,7 +107,7 @@ public class HomeController extends HttpServlet{
 		 return "ViewProducts";
 	}
 	
-	/*@RequestMapping("/viewProduct/{Product_Id}")
+	@RequestMapping("/viewProduct/{Product_Id}")
 	public String ViewProduct(Model model, @PathVariable int Product_Id){
 		HttpHeaders headers = new HttpHeaders();
     	headers.setContentType(MediaType.APPLICATION_JSON);
@@ -108,20 +120,21 @@ public class HomeController extends HttpServlet{
 		 model.addAttribute("paginationProduct", productsmodel);
 		 return "viewProduct";
 		
-	}*/
+	}
 	
-	@RequestMapping("/viewCart/{Product_Id}")
-	public String ViewProduct(Model model, @PathVariable int Product_Id){
-		HttpHeaders headers = new HttpHeaders();
-    	headers.setContentType(MediaType.APPLICATION_JSON);
-        RestTemplate restTemplate = new RestTemplate();
-	String url = "http://localhost:8080/AllProducts/"+ Product_Id;
-	 HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-     ResponseEntity<ProductsModel> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, ProductsModel.class);
-     ProductsModel productsmodel = responseEntity.getBody();
+	@RequestMapping("/viewCart/{LoginId}")
+	public String ViewUserCart(Model model, @PathVariable String LoginId){
+			List<Cart_Items> cartitems = cartservice.getUserCart(LoginId);
+		 model.addAttribute("ViewUserCart", cartitems);
+		 return "viewCart";
 		
-		 model.addAttribute("paginationProduct", productsmodel);
-		 return "viewProduct";
+	}
+	
+	@RequestMapping("/viewprofile/{LoginId}")
+	public String viewProfile(Model model, @PathVariable String LoginId){
+		UserModel usermodel = userservice.getUserById(LoginId);
+		 model.addAttribute("ViewUser", usermodel);
+		 return "viewprofile";
 		
 	}
 	

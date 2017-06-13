@@ -17,6 +17,19 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+  
+  #pass1{
+  margin-left:680px;
+  }
+  
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
   </style>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
@@ -54,7 +67,9 @@ function noBack(){
             </tr>
         </table>
     </div>
+    <p id="pass1"><a href="/forgotpassword" style="color:red">Forgot password?</a></p>
         <h3><font color="green">New user? <a href="/Register">Click here to Register</a></font></h3>
+        
    
 </body>
 </html>

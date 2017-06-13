@@ -40,19 +40,18 @@ function noBack(){
    
   <title>User's Shopping Page</title>
 </head>
-<body onLoad="noBack();">
-
-
-	<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
+<body onLoad="noBack();">	
+<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
 
 	
     <h2 align="center">Welcome <%=request.getParameter("name")%>, Good Morning</h2>
     
    <ul>
-    <li><a href="/updateprofile">Update Profile</a></li>
-    <li><a href="/viewCart">View Cart</a></li>
+    <li><a href="/viewprofile/<%=request.getParameter("name")%>/?id=<%=request.getParameter("name")%>">View/Update Profile</a></li>
+    <li><a href="/viewCart/<%=request.getParameter("name")%>/?id=<%=request.getParameter("name")%>">View Cart</a></li>
     <li><a href="/orders">Your Orders</a></li>
-    <li><a href="/contact">Contact Support</a></li>
+    <li><a href="/contact/?id=<%=request.getParameter("name")%>">Contact Support</a></li>
+    <li><a href="/ViewProducts/?id=<%=request.getParameter("name")%>">View Products</a></li>
   </ul>
     
     <h2 id="message" style="color:green"></h2>

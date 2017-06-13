@@ -10,17 +10,18 @@ $(document).ready(function () {
     		var product_Name = $("#prodname").val();
     		var product_Supplier = $("#prodsup").val();
     		var product_Price = $("#prodprice").val();
-    		var msg;
         
         var json = {"productModel": {"product_Id": product_Id, "product_Name": product_Name, "product_Supplier": product_Supplier, "product_Price": product_Price }, "cartLine_Quantity": cartLine_Quantity };
        
-        if (cartLine_Quantity == '') {
-            alert("Please Enter the quantity...!!!");
+        if(cartLine_Quantity == '') {
+            alert("Please Enter Quantity..!!!");
+        }else if (cartLine_Quantity >= 5) {
+            alert("Number of pieces should be less than 4 items ...!!!");
         } 
         
         else {
              $.ajax({
-                url: $("#addcart").attr("action"),
+                url: "http://localhost:8080/AddCartItems/"+username,
                 type: "POST",
                 contentType: "application/json",
                 data: JSON.stringify(json),
@@ -31,7 +32,6 @@ $(document).ready(function () {
                 error:function(response){
                 	alert("Product Failed to Add...Please enter correct Quantity and Try Again");
                 	window.location = "/ViewProducts/?id="+username;
-
                 }
              });
              

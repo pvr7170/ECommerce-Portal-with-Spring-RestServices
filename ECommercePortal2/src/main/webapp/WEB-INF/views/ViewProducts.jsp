@@ -28,10 +28,10 @@
    <title>Product List page</title>
 </head>
 <body>
-
+<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
 	
        <div id="menu">
-       <h3><a href="/WelcomeUser" text-align="right"> (- Back to List </a></h3>
+       <h3 align="right"><a href="/WelcomeUser?name=<%=request.getParameter("id")%>"> (- Back to Products List </a></h3>
        
      <h2>Your List of products <%=request.getParameter("id")%></h2>
      
@@ -42,8 +42,8 @@
                <li>Name: ${prodInfo.product_Name}</li>
                <%-- <li>Supplier: ${prodInfo.product_Supplier}</li> --%>
                <li>Price: <fmt:formatNumber value="${prodInfo.product_Price}" type="currency"/></li>
-               <li><a href="/viewProduct/${prodInfo.product_Id}/?ids=<%=request.getParameter("id")%>" id="addcart">View Product details/Add to Cart</a></li>
-               <li><a href="/shoppingCart/${prodInfo.product_Id}/<%=request.getParameter("id")%>" id="addcart">Add to Cart</a></li>
+               <li><a href="/viewProduct/${prodInfo.product_Id}/?ids=<%=request.getParameter("id")%>" id="addcart">View Product details / Add to Cart</a></li>
+           <%--     <li><a href="/shoppingCart/${prodInfo.product_Id}/<%=request.getParameter("id")%>" id="addcart">Add to Cart</a></li> --%>
               <p>-----------------------------------------------------------------------------------------</p>
            </ul>
 

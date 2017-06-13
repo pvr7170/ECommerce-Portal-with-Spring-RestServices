@@ -22,9 +22,6 @@
     font-size: 6px;
     margin: 2px 1px;
  }
-#menu{
-background-color: black;
-}
 #quan{
 color:Aqua;
 font-size: 20px;
@@ -41,7 +38,8 @@ display: none;
 <title>Product details</title>
 </head>
 <body>
-
+<p id="log" align="right" style="font-size:25px;"><a href="/Logout">Logout</a></p>
+<h3 align="right"><a href="/WelcomeUser?name=<%=request.getParameter("ids")%>"> (- Back to Products List </a></h3>
 	
 <p align="left">(*)Mandatory Fields</p>
 	
@@ -49,7 +47,7 @@ display: none;
   
   	<p id="username"><input type="button" id="user" value="<%=request.getParameter("ids")%>"></p>
   
-  		<p><img src="/images/${paginationProduct.product_Id}.jpg" width="300" height="300"></p>
+  		<p><img src="/images/${paginationProduct.product_Id}.jpg" width="350" height="350"></p>
           
          
               <p id="username">Displaying Products:  <input type="button" id="prodid" value="${paginationProduct.product_Id}" disabled></p>
@@ -57,11 +55,12 @@ display: none;
           	  <p><img src="/images/arrow.png" width="70" height="30">Supplier:  <input type="button" id="prodsup" value="${paginationProduct.product_Supplier}" disabled></p>
           	  <p>Price:  $<input type="button" id="prodprice" value="${paginationProduct.product_Price}" disabled></p>
           	  
-         <form class="form" id="addcart" action="http://localhost:8080/AddCartItems/<%=request.getParameter("ids")%>"> 
+         <%-- <form class="form" id="addcart" action="http://localhost:8080/AddCartItems/<%=request.getParameter("ids")%>"> 
          	  <p id="quan">*Enter Quantity (Max:4 pieces):  <input type="text" style="text-align:center;" id="quantity" placeholder="Enter quantity" required="required"></p>
-         	  <p><input type="button" value="Add Cart" name="addcart" id="addcart"></p>
-         </form>
-   
+         	  <p><input type="button" value="Add to Cart" name="addcart" id="addcart"></p>
+         </form> --%>
+      <p id="quan">*Enter Quantity (Max:4 pieces):  <input type="text" style="text-align:center;" id="quantity" placeholder="Enter quantity" required="required"></p>
+       	  <p><input type="button" value="Add to Cart" name="addcart" id="addcart"></p>
        </div>
  
 	

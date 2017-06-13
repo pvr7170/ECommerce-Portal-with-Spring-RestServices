@@ -16,7 +16,7 @@ $(document).ready(function () {
         if (loginId == '' || password == '' || confirmpassword == '' || firstName == '' || lastName == '' || address == '') {
             alert("Please fill out all fields...!!!");
         } else if ((password.length) < 6) {
-            alert("Password should atleast 6 character in length...!!!");
+            alert("Password should be atleast 6 characters in length...!!!");
         } else if (!(password).match(confirmpassword)) {
             alert("Your password don't match Confirm password. Try again?");
         } else {

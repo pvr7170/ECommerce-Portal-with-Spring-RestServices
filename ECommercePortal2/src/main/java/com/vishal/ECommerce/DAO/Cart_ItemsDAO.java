@@ -37,6 +37,14 @@ public class Cart_ItemsDAO {
 		public Cart_Items getItemById(int CartLine_Id) {
 			return entityManager.find(Cart_Items.class, CartLine_Id);
 		}
+		
+		//---------- Get Cart Items by UserID-----------------------------------
+		public List<Cart_Items> getUserCart(String LoginId) {
+			String hql = "From UserModel where LoginId=:LoginId";
+			UserModel user = (UserModel) entityManager.createQuery(hql).setParameter("LoginId", LoginId).getSingleResult();
+			List<Cart_Items> l = user.getCartItems();
+			return l;
+		}
 			
 		//------------Add Cart Item-----------------------------------------------
 		public String AddItemToCart(String Login_Id, Cart_Items cartitems) {

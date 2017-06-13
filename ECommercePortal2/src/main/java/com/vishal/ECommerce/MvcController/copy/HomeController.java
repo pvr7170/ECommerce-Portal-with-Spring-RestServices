@@ -1,13 +1,22 @@
 package com.vishal.ECommerce.MvcController.copy;
 
+import java.io.File;
+import java.net.URI;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
-
 import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +24,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.vishal.ECommerce.Model.Cart_Items;
 import com.vishal.ECommerce.Model.ProductsModel;
 import com.vishal.ECommerce.Model.UserModel;
@@ -74,19 +82,54 @@ public class HomeController extends HttpServlet{
 		return "Login";
 	}
 	
-	@RequestMapping("/ViewProducts")
-	public String ViewProducts(Model model, String LoginId){
-		 List<ProductsModel> result = productservice.getAllProducts();
-		 
+	/*@RequestMapping("/ViewProducts/{LoginId}")
+	public String ViewProducts(Model model, @PathVariable String LoginId){
+		List<ProductsModel> result = productservice.getAllProducts();
 		 model.addAttribute("paginationProducts", result);
 		 return "ViewProducts";
+	}*/
+	@RequestMapping("/ViewProducts")
+	public String ViewProducts(Model model){
+		List<ProductsModel> result = productservice.getAllProducts();
+		 model.addAttribute("paginationProducts", result);
+		 return "ViewProducts";
+	}
+	
+	/*@RequestMapping("/viewProduct/{Product_Id}")
+	public String ViewProduct(Model model, @PathVariable int Product_Id){
+		HttpHeaders headers = new HttpHeaders();
+    	headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+	String url = "http://localhost:8080/AllProducts/"+ Product_Id;
+	 HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+     ResponseEntity<ProductsModel> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, ProductsModel.class);
+     ProductsModel productsmodel = responseEntity.getBody();
+		
+		 model.addAttribute("paginationProduct", productsmodel);
+		 return "viewProduct";
+		
+	}*/
+	
+	@RequestMapping("/viewCart/{Product_Id}")
+	public String ViewProduct(Model model, @PathVariable int Product_Id){
+		HttpHeaders headers = new HttpHeaders();
+    	headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+	String url = "http://localhost:8080/AllProducts/"+ Product_Id;
+	 HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+     ResponseEntity<ProductsModel> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, ProductsModel.class);
+     ProductsModel productsmodel = responseEntity.getBody();
+		
+		 model.addAttribute("paginationProduct", productsmodel);
+		 return "viewProduct";
 		
 	}
-
 	
-	@RequestMapping("/shoppingCart")
-	public String AddCart(Model model){
-	 return "shoppingCart";
+	
+	@RequestMapping("/shoppingCart/{Product_Id}/{login_Id}")
+	public String AddCart(Model model,@PathVariable int Product_Id,@PathVariable String login_Id,HttpServletRequest request){
+	//	cartservice.AddItemToCart(login_Id, cartitems);
+		 return "shoppingCart";
 	}
 	
 	

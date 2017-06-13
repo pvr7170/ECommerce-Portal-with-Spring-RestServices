@@ -24,7 +24,15 @@
 
                <h3><a href="/ViewProducts" text-align="right"> (- Back to shopping </a></h3>
 		
-			<h2> Product Successfully added to Cart</h2> <br>
-			<h3><a href="ViewCart">View Cart</a></h3>
+			<h3> Product Successfully added to Cart</h3> <br>
+	
+	
+	
+	
+	
+			
+			
+			
+
 	</body>
 	</html>

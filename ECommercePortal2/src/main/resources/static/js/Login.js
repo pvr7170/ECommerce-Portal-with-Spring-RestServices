@@ -3,11 +3,11 @@ $(document).ready(function () {
     	
         var username = $("#username").val();
         var pass = $("#pass").val();
-
+        var msg;
         $.get("http://localhost:8080/AllUsers", function (data) {
             $.each(data, function (i, contact) {
                 if (contact.loginId == username && contact.password == pass) {
-                	 window.location = "/WelcomeUser";
+                	 window.location = "/WelcomeUser?name="+username;
                 } else {
                     msg = "Invalid username or password!";
                 }

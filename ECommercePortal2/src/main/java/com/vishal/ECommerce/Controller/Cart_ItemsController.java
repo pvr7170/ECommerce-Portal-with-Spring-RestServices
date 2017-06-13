@@ -49,6 +49,14 @@ public class Cart_ItemsController {
 		return new ResponseEntity<Cart_Items>(cartitems, HttpStatus.OK);
 	}
 	
+	//---------- Get cart items by UserID-----------------------------------
+	@RequestMapping(value="/AllUserCart/{LoginId}", method=RequestMethod.GET)
+	public ResponseEntity <List<Cart_Items>> getUserCart(@PathVariable("LoginId") String LoginId) {
+		List<Cart_Items> cartitems = cartservice.getUserCart(LoginId);
+		return new ResponseEntity<List<Cart_Items>>(cartitems, HttpStatus.OK);
+	}
+	
+	
 	//-----------Add cart Items by User's LoginId and CartItems model-----------------------
 	@RequestMapping(value="/AddCartItems/{id}", method=RequestMethod.POST)
 	public ResponseEntity<String> AddCartItemByLoginId(@PathVariable("id") String Login_Id, @RequestBody Cart_Items cartitems){

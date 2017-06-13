@@ -7,6 +7,20 @@
     <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+    <style>
+    #doRegister{
+     background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    
+    </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
    

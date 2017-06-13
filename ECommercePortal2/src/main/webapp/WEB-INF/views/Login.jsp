@@ -5,7 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <style>
+  #doLogin{
+   background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  </style>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <script type="text/javascript">
 window.history.forward();
@@ -16,6 +29,7 @@ function noBack(){
 
     <!--To check user credential by Rest Link-->
     <script src="js/Login.js"></script>
+    
     
     <title>ECommerce Portal</title>
 </head>
@@ -36,7 +50,7 @@ function noBack(){
             </tr>
 
             <tr>
-                <td><input type="button" value="Login" name="doLogin" id="doLogin"/></td>
+                <td><input type="button" value="Login" name="doLogin" id="doLogin" onclick="userID()"/></td>
             </tr>
         </table>
     </div>

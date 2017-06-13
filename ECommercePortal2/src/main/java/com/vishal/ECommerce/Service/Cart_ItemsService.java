@@ -35,6 +35,12 @@ public class Cart_ItemsService {
 			return obj;
 		}
 		
+		//---------- Get Cart Items by UserID-----------------------------------
+		public List<Cart_Items> getUserCart(String LoginId){
+			return cartdao.getUserCart(LoginId);
+			
+		}
+		
 		//-----------Add cart Items by User's LoginId and CartItems model-----------------------
 		public String AddItemToCart(String Login_Id, Cart_Items cartitems){
 			return cartdao.AddItemToCart(Login_Id, cartitems);

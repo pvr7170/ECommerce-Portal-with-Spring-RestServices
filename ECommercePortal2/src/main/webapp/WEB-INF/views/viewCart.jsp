@@ -40,7 +40,10 @@ font-style: italic;
 p#username{
 display: none;
 }
-
+#sub{
+color:green;
+font-size: 20px;
+}
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -75,13 +78,13 @@ display: none;
 			
          
            <ul>
-               <li><img src="/images/${cartInfo.productModel.product_Id}.jpg" width="200" height="200"></li>
+               <li><img src="/images/${cartInfo.productModel.product_Id}.jpg" width="250" height="200"></li>
                <li>Name: ${cartInfo.productModel.product_Name}</li>
                <li>Product Price: <fmt:formatNumber value="${cartInfo.productModel.product_Price}" type="currency"/></li>
                <li>Supplier: ${cartInfo.productModel.product_Supplier}</li>
-               <li id="quan">Update Quantity:  <input type="text" style="text-align:center;" value="${cartInfo.cartLine_Quantity}" id="quantity" placeholder="update New quantity" required="required"></li>
+               <li id="quan">Update Quantity:  <input type="text" style="text-align:center;" value="${cartInfo.cartLine_Quantity}" id="quantity" size="40" placeholder="update New quantity" required="required"></li>
    				<li><input type="button" value="Update Quantity" name="updatequan" id="updatequan">
-               <li>Subtotal:  $${cartInfo.cartLine_Price}</li>
+               <li id="sub">Subtotal:  $${cartInfo.cartLine_Price}</li>
                <li><input type="button" value="Delete Product" name="delete" id="delete">
              <p>-----------------------------------------------------------------------------------------</p>
            </ul>

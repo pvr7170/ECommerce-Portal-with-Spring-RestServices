@@ -38,7 +38,7 @@
        <c:forEach items="${paginationProducts}" var="prodInfo">
          
            <ul>
-               <li><img src="/images/${prodInfo.product_Id}.jpg" width="200" height="200"></li>
+               <li><img src="/images/${prodInfo.product_Id}.jpg" width="250" height="200"></li>
                <li>Name: ${prodInfo.product_Name}</li>
                <%-- <li>Supplier: ${prodInfo.product_Supplier}</li> --%>
                <li>Price: <fmt:formatNumber value="${prodInfo.product_Price}" type="currency"/></li>
